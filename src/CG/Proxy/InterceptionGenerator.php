@@ -109,7 +109,7 @@ class InterceptionGenerator implements GeneratorInterface
 
             $genMethod = PhpMethod::fromReflection($method)
                 ->setBody(sprintf($interceptorCode, var_export(ClassUtils::getUserClass($method->class), true), var_export($method->name, true), $params, $params))
-                ->setDocblock(null)
+                ->setDocblock($method->getDocComment())
             ;
             $genClass->setMethod($genMethod);
         }
